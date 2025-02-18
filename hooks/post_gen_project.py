@@ -10,6 +10,7 @@ if __name__ == '__main__':
         pathlib.Path("README.md").unlink()
 
     if "{{ cookiecutter.create_own_driver }}" == "False":
+        shutil.rmtree("include/drivers")
         shutil.rmtree("drivers")
         shutil.rmtree("dts")
 
@@ -17,6 +18,7 @@ if __name__ == '__main__':
         shutil.rmtree("boards")
 
     if "{{ cookiecutter.create_own_library }}" == "False":
+        shutil.rmtree("include/lib")
         shutil.rmtree("lib")
         shutil.rmtree("tests")
 
