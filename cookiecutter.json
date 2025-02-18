@@ -3,7 +3,18 @@
     "project_name_slug": "{{ cookiecutter.project_name | slugify }}",
     "project_org": "Acme Inc.",
     "project_org_slug": "{{cookiecutter.project_org | slugify }}",
+    "project_description": "An example downstream project or application based on Zephyr RTOS.",
     "repo_url": "https://github.com/{{cookiecutter.project_org_slug}}/{{cookiecutter.project_name_slug}}",
 
-    "_extensions":["cookiecutter.extensions.SlugifyExtension"]
+    "create_application": ["Original from zephyrproject-rtos/example-application", "No"],
+
+    "create_own_driver": false,
+    "create_own_board": false,
+    "create_own_library": false,
+    "create_own_west_command": false,
+
+    "setup_ci_pipeline": ["GitHub Actions", "No"],
+    "setup_documentation": ["With Doxygen", "No"],
+
+    "_extensions": ["cookiecutter.extensions.SlugifyExtension"]
 }
