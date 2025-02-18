@@ -18,7 +18,7 @@ if __name__ == '__main__':
 
     if "{{ cookiecutter.create_own_library }}" == "False":
         shutil.rmtree("lib")
-        shutil.rmtree("test")
+        shutil.rmtree("tests")
 
     if "{{ cookiecutter.create_own_west_command }}" == "False":
         shutil.rmtree("scripts")
@@ -26,7 +26,7 @@ if __name__ == '__main__':
     if "{{ cookiecutter.setup_documentation }}" == "With Doxygen":
         pathlib.Path("doc{doxygen}").rename("doc")
     else:
-        pathlib.Path("doc{doxygen}").unlink()
+        shutil.rmtree("doc{doxygen}")
 
     if "{{ cookiecutter.setup_ci_pipeline }}" != "GitHub Actions":
         shutil.rmtree(".github")
