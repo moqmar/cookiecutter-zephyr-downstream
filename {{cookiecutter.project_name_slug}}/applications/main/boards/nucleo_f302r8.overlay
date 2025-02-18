@@ -1,4 +1,5 @@
 /*
+ * Copyright (c) {% now 'utc', '%Y' %} {{cookiecutter.project_org}}
  * Copyright (c) 2021 Nordic Semiconductor ASA
  * SPDX-License-Identifier: Apache-2.0
  */
@@ -10,9 +11,10 @@
  */
 
 / {
-	examplesensor0: examplesensor_0 {
-		compatible = "zephyr,examplesensor";
-		input-gpios = <&gpioc 13 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
+	blink_led: blink-led {
+		compatible = "blink-gpio-led";
+		led-gpios = <&gpiob 13 GPIO_ACTIVE_HIGH>;
+		blink-period-ms = <1000>;
 	};
 };
 
