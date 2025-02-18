@@ -1,59 +1,12 @@
 # {{cookiecutter.project_name}}
 
-Here goes some description
+{{cookiecutter.project_description}}
 
 ## Getting Started
 
+1. Install Zephyr according to <https://docs.zephyrproject.org/latest/develop/getting_started/index.html> (for Windows, WSL2 with Ubuntu is recommended)
+2. Clone this repo & create a Zephyr workspace using `west init -m {{cookiecutter.repo_url}} --mr main {{cookiecutter.project_slug}}-workspace`  
+   (if you already have cloned this repo into an empty workspace using *git*, run `west init -l {{cookiecutter.project_slug}}-workspace/{{cookiecutter.project_slug}}` instead)
+3. In `{{cookiecutter.project_slug}}-workspace`, run `west build {{cookiecutter.project_slug}}/applications/app -p always` to build the project
 
-### Step 1
-
-Prepare a fresh workspace, we prefer to keep all additional python packages inside a python virtualenv:
-
-```bash
-mkdir {{cookiecutter.project_name_slug}}_ws && cd {{cookiecutter.project_name_slug}}_ws
-python3 -m venv .venv
-source .venv/bin/activate
-pip install pip --upgrade
-pip install west
-```
-
-### Step 2
-
-Clone the repo, initialize the workspace and populate with the required modules. Check `{{cookiecutter.project_name_slug}}/west.yml` for details:
-
-```bash
-git clone {{cookiecutter.repo_url}}
-west init -l {{cookiecutter.project_name_slug}}
-west update
-```
-
-### Step 3
-
-Install needed python dependencies
-
-```bash
-pip install -r zephyr/scripts/requirements.txt
-pip install -r {{cookiecutter.project_name_slug}}/scripts/requirements.txt
-```
-
-You also need a recent version of `cmake` and a compiler toolchain suitable to build Zephyr applications installed. 
-Check the official upstream documentation [how to install one](https://docs.zephyrproject.org/latest/develop/getting_started/index.html#install-zephyr-sdk). 
-
-## Building first applications
-
-Build the `hello_world` example from the Zephyr upstream repo
-
-```bash
-west build -b qemu_cortex_m3 zephyr/samples/hello_world/
-```
-
-and run it (assuming you installed the official Zephyr SDK)
-
-```bash
-west build -t run
-```
-
-
-## Credits
-
-This project was bootstrapped with cookiecutter-zephyr-downstream.
+> *This project was bootstrapped with [cookiecutter-zephyr-downstream](https://github.com/tiacsys/cookiecutter-zephyr-downstream).*
