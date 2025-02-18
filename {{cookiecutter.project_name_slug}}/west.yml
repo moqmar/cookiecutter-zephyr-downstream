@@ -1,68 +1,23 @@
-# The west manifest file for {{cookiecutter.project_name}} 
-# embedded systems based on Zephyr.
-#
-# Copyright (c) 2023 {{cookiecutter.project_org}}
+# Copyright (c) {% now 'utc', '%Y' %} {{cookiecutter.project_org}}
+# Copyright (c) 2021 Nordic Semiconductor ASA
 # SPDX-License-Identifier: Apache-2.0
-#
-# The per-installation west configuration file, .west/config, sets the
-# path to the project containing this file in the [manifest] section's
-# "path" variable.
-#
-# You can pass your manifest repositories to west init when creating a
-# new Zephyr installation. See the west documentation for more
-# information.
 
 manifest:
-  version: "0.13"
+  self:
+    west-commands: scripts/west-commands.yml
 
-  # If not otherwise specified, the projects below should be obtained
-  # from the {{cookiecutter.project_org}} remote.
-  defaults:
-    remote: {{cookiecutter.project_org_slug}}
-
-  # "remotes" is a list of locations where git repositories are cloned
-  # and fetched from.
   remotes:
-    - name: {{cookiecutter.project_org_slug}}
-      url-base: https://github.com/{{cookiecutter.project_org_slug}}
-    - name: zephyrproject
+    - name: zephyrproject-rtos
       url-base: https://github.com/zephyrproject-rtos
 
-  # "projects" is a list of git repositories which make up the TIAC
-  # source code. Please add items below based on alphabetical order.
   projects:
-
-    # The Zephyr RTOS fork in the TIAC organization, along with the subset
-    # of its modules which TIAC imports (partly but not yet) directly.
     - name: zephyr
-      path: zephyr
-      remote: zephyrproject
-      repo-path: zephyr
-      revision: v3.3-branch
-      clone-depth: 10
-      # import submodules from Zephyr manifest
+      remote: zephyrproject-rtos
+      revision: v4.0.0
       import:
-        # In addition to the Zephyr repository itself, {{cookiecutter.project_name}} also
-        # imports the contents of Zephyr/west.yml at the above
-        # revision. Only the projects explicitly named in the
-        # following allowlist are reimported.
-        #
-        # Note that the Zephyr west extensions (like 'build', 'flash',
-        # 'debug', etc.) are automatically provided by this import, so
-        # there's no need to add a redundant west-commands: key for
-        # the Zephyr project.
-        #
-        # Please keep this list sorted alphabetically.
+        # By using name-allowlist we can clone only the modules that are
+        # strictly needed by the application.
         name-allowlist:
-          - cmsis
-
-      # hook up for Bridle zephyr_trampoline.py
-      userdata:
-        west-commands-path: scripts/west_commands
-
-  # West-related configuration for the {{cookiecutter.project_name}} repository.
-  self:
-    path: {{cookiecutter.project_name_slug}}
-    # This line configures west extensions implemented as west extensions
-    # contributed by {{cookiecutter.project_name}}
-    west-commands: scripts/west-commands.yml
+          - cmsis      # required by the ARM port
+          - hal_nordic # required by the custom_plank board (Nordic based)
+          - hal_stm32  # required by the nucleo_f302r8 board (STM32 based)

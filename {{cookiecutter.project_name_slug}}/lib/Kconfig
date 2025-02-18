@@ -1,8 +1,9 @@
+# Copyright (c) {% now 'utc', '%Y' %} {{cookiecutter.project_org}}
 # Copyright (c) 2021 Legrand North America, LLC.
 # SPDX-License-Identifier: Apache-2.0
 
-menu "Libraries"
+menu "Downstream libraries"
 
-rsource "custom_lib/Kconfig"
+rsource "custom/Kconfig"
 
 endmenu
