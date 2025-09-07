@@ -1,17 +1,14 @@
-# Copyright (c) {% now 'utc', '%Y' %} {{cookiecutter.project_org}}
-# SPDX-License-Identifier: Apache-2.0
-
 # This file is provided so that the application can be compiled using Twister,
 # the Zephyr testing tool. In this file, multiple combinations can be specified,
 # so that you can easily test all of them locally or in CI.
 sample:
-  description: Example application
-  name: example-application
+  description: "{{ cookiecutter.project_name }}"
+  name: "{{ cookiecutter.project_name_slug }}"
 common:
   build_only: true
-  integration_platforms:
-    - custom_plank
-    - nucleo_f302r8
+  integration_platforms:{% if cookiecutter.create_own_board %}
+    - custom_plank{% endif %}
+    - nrf52840dongle
 tests:
   app.default: {}
   app.debug:

@@ -1,4 +1,5 @@
 /*
+ * Copyright (c) {% now 'utc', '%Y' %} {{cookiecutter.project_org}}
  * Copyright (c) 2021 Legrand North America, LLC.
  *
  * SPDX-License-Identifier: Apache-2.0

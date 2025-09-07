@@ -6,9 +6,9 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = 'Example Application'
-copyright = '2024, The Zephyr Community'
-author = 'The Zephyr Community'
+project = '{{ cookiecutter.project_name }}'
+copyright = '2025, {{ cookiecutter.project_org }}'
+author = '{{ cookiecutter.project_org }}'
 release = '1.0.0'
 
 # -- General configuration ---------------------------------------------------

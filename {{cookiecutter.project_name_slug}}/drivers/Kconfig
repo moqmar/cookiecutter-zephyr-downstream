@@ -4,4 +4,5 @@
 
 menu "Downstream drivers"
 rsource "blink/Kconfig"
+rsource "sensor/Kconfig"
 endmenu

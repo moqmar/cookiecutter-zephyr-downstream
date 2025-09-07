@@ -1,10 +1,11 @@
 /*
+ * Copyright (c) {% now 'utc', '%Y' %} {{cookiecutter.project_org}}
  * Copyright (c) 2021, Legrand North America, LLC.
  *
  * SPDX-License-Identifier: Apache-2.0
  */
 
-#include <lib/custom.h>
+#include <app/lib/custom.h>
 
 int custom_get_value(int val)
 {

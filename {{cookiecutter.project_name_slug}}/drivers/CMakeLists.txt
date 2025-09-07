@@ -6,5 +6,4 @@
 add_subdirectory_ifdef(CONFIG_BLINK blink)
 
 # Out-of-tree drivers for existing driver classes
-# add_subdirectory_ifdef(CONFIG_SENSOR sensor)
-# See https://github.com/zephyrproject-rtos/example-application for a full example
+add_subdirectory_ifdef(CONFIG_SENSOR sensor)

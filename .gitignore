@@ -1,0 +1,6 @@
+.test/
+.epdiff/
+
+# pixi environments
+.pixi
+*.egg-info

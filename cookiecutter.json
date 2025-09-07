@@ -6,15 +6,26 @@
     "project_description": "An example downstream project or application based on Zephyr RTOS.",
     "repo_url": "https://github.com/{{cookiecutter.project_org_slug}}/{{cookiecutter.project_name_slug}}",
 
-    "create_application": ["Original from zephyrproject-rtos/example-application", "No"],
+    "main_application_template": [
+        "Original from zephyrproject-rtos/example-application",
+        "Skeleton for a quick fresh start",
+        "Skip"
+    ],
 
     "create_own_driver": false,
     "create_own_board": false,
     "create_own_library": false,
     "create_own_west_command": false,
+    "create_own_runner": false,
 
-    "setup_ci_pipeline": ["GitHub Actions", "No"],
-    "setup_documentation": ["With Doxygen", "No"],
+    "setup_ci_pipeline": [
+        "GitHub Actions",
+        "Skip"
+    ],
+    "setup_documentation": [
+        "With Sphinx/Doxygen",
+        "Skip"
+    ],
 
     "_extensions": ["cookiecutter.extensions.SlugifyExtension"]
 }

@@ -1,4 +1,5 @@
 /*
+ * Copyright (c) {% now 'utc', '%Y' %} {{cookiecutter.project_org}}
  * Copyright (c) 2021 Nordic Semiconductor ASA
  * SPDX-License-Identifier: Apache-2.0
  */
@@ -22,11 +23,18 @@
 		input-gpios = <&gpio0 11 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
 	};
 
-	blink_led: blink-led {
-		compatible = "blink-gpio-led";
-		led-gpios = <&gpio0 13 GPIO_ACTIVE_LOW>;
-		blink-period-ms = <1000>;
-	};
+	{% if cookiecutter.create_own_driver %}blink_led: blink-led {
+	compatible = "blink-gpio-led";
+	led-gpios = <&gpio0 13 GPIO_ACTIVE_LOW>;
+	blink-period-ms = <1000>;
+	};{% else %}leds {
+	compatible = "gpio-leds";
+
+		blink_led: blink_led {
+			gpios = <&gpio0 13 GPIO_ACTIVE_LOW>;
+			label = "User LED";
+		};
+	};{% endif %}
 };
 
 &reg0 {

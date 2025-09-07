@@ -4,9 +4,43 @@
 
 ## Getting Started
 
-1. Install Zephyr according to <https://docs.zephyrproject.org/latest/develop/getting_started/index.html> (for Windows, WSL2 with Ubuntu is recommended)
-2. Clone this repo & create a Zephyr workspace using `west init -m {{cookiecutter.repo_url}} --mr main {{cookiecutter.project_name_slug}}-workspace`  
-   (if you already have cloned this repo into an empty workspace using *git*, run `west init -l {{cookiecutter.project_name_slug}}-workspace/{{cookiecutter.project_name_slug}}` instead)
-3. In `{{cookiecutter.project_name_slug}}-workspace`, run `west build {{cookiecutter.project_name_slug}}/applications/main -p always` to build the project
+1. Install Zephyr [dependencies](https://docs.zephyrproject.org/latest/develop/getting_started/index.html#install-dependencies) and [west](https://docs.zephyrproject.org/latest/develop/getting_started/index.html#install-dependencies) (steps 1-3)
+2. Activate the Zephyr environment:
+   ```bash
+   source ~/zephyrproject/.venv/bin/activate
+   ```
+3. Initialize your workspace:
+   - If you want to clone & initialize this repo in a new empty workspace directory:
+     ```bash
+     west init -m {{cookiecutter.repo_url}} --mr main .
+     ```
+   - If you have just created or already cloned this repo into an empty workspace directory:
+     ```bash
+     west init -l ./{{cookiecutter.project_name_slug}}
+     ```
+4. Update all dependencies:
+   ```bash
+   west update
+   west zephyr-export
+   west packages pip --install
+   west sdk install
+   west blobs fetch
+   ```
+5. Build your application:
+   ```bash
+   west build {% if cookiecutter.main_application_template != "" %}{{cookiecutter.project_name_slug}}/applications/main{% else %}zephyr/samples/basic/blinky{% endif %} -p always -b nucleo_f302r8
+   ```
+5. Run Twister tests:
+    ```bash
+    west twister -v -T . --integration
+    ```
+{% if cookiecutter.setup_documentation != "Skip" %}
+6. Build your documentation:
+   ```bash
+   cd {{cookiecutter.project_name_slug}}/docs
+   make html
+   python3 -m http.server --directory _build_sphinx/html
+   ```
+{% endif %}
 
 > *This project was bootstrapped with [cookiecutter-zephyr-downstream](https://github.com/tiacsys/cookiecutter-zephyr-downstream).*

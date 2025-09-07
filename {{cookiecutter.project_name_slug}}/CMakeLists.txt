@@ -9,6 +9,7 @@
 # This is needed so that custom driver classes using system calls are taken into
 # account
 {% if not cookiecutter.create_own_driver and not cookiecutter.create_own_library %}#{% endif %}zephyr_syscall_include_directories(include)
+
 {% if not cookiecutter.create_own_driver and not cookiecutter.create_own_library %}#{% endif %}zephyr_include_directories(include)
 
 {% if not cookiecutter.create_own_driver %}#{% endif %}add_subdirectory(drivers)

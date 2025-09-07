@@ -1,7 +1,7 @@
 common:
   tags: extensibility
-  integration_platforms:
-    - custom_plank
+  integration_platforms:{% if cookiecutter.create_own_board %}
+    - custom_plank{% endif %}
     - qemu_cortex_m0
 tests:
   lib.custom: {}

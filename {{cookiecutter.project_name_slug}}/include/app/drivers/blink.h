@@ -1,9 +1,11 @@
 /*
+ * Copyright (c) {% now 'utc', '%Y' %} {{cookiecutter.project_org}}
  * Copyright (c) 2024 Nordic Semiconductor ASA
  * SPDX-License-Identifier: Apache-2.0
  */
 
-#pragma once
+#ifndef APP_DRIVERS_BLINK_H_
+#define APP_DRIVERS_BLINK_H_
 
 #include <zephyr/device.h>
 #include <zephyr/toolchain.h>
@@ -107,3 +109,5 @@ static inline int blink_off(const struct device *dev)
 /** @} */
 
 /** @} */
+
+#endif /* APP_DRIVERS_BLINK_H_ */

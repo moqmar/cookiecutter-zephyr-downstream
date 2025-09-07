@@ -11,13 +11,5 @@
  */
 
 / {
-	blink_led: blink-led {
-		compatible = "blink-gpio-led";
-		led-gpios = <&gpiob 13 GPIO_ACTIVE_HIGH>;
-		blink-period-ms = <1000>;
-	};
-};
-
-&gpioc {
-	status = "okay";
+	// TODO
 };
